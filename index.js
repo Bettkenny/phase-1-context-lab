@@ -10,11 +10,30 @@ function createEmployeeRecord(row){
     }
 
 }
-const createEmployeeRecord = (row)=>{
+const createEmployeeRecords = (row)=>{
    return row.map(createEmployeeRecord); 
 }
-function createEmployeeRecord(row){
-    
+function createTimeInEvent(timeStamp){
+this.timeInEvents.push({
+    type: "TimeIn",
+    hour: parseInt(timeStamp.split(" ")[1],10),
+    date: timeStamp.split("")[0],
+});
+return this;
+}
+function createTimeOutEvent(timeInStamp){
+    this.timeOutEvents.push({
+       type: "TimeOut",
+       hour: parseInt.split(timeStamp.split(" ")[2],10),
+       date: timeStamp.split("")[0] 
+    })
+    return this;
+}
+function hoursWorkedOnDate(dateAndHours){
+    const timeIn = this.timeInEvents.find(timeStamp => timeStamp.date === dateAndHours).hour
+    const timeOut = this.timeOutEvents.find(timeStamp => timeStamp.date === dateAndHours).hour
+    const totalHours = (timeOut - timeIn)
+    return totalHours / 100
 }
 /*
  We're giving you this function. Take a look at it, you might see some usage
